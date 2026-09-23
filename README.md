@@ -24,11 +24,9 @@ smart-operator-assistant/
 └── .env.example             # Template for environment variables
 ```
 
-## Team Responsibilities
+## Quick Start
 
-- **Member 1 (Frontend):** React dashboard, UI components, Recharts integration, and Axios API calling.
-- **Member 2 (Backend & Database):** PostgreSQL schema, FastAPI configuration, endpoints, data validation, and database seeding.
-- **Member 3 (ML & Intelligence):** Task prediction, anomaly detection, rule-based safety engine, and training recommendations.
+This repository is designed to be easily demonstrable. A complete end-to-end launch script is provided to handle all dependencies, training, and database seeding automatically.
 
 ## PostgreSQL Setup
 
