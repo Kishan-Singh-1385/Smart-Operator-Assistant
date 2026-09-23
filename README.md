@@ -71,9 +71,9 @@ smart-operator-assistant/
 
 ## ML Model Training
 
-> **Note:** The problem statement provided an extremely small dataset. Therefore, the prototype uses clearly labeled synthetic training data derived from the sample distribution to train the models. This is for demonstration purposes only and does not represent real-world performance.
+> **Note:** The problem statement provided an extremely small dataset. We have populated 1000 records of synthetic training data for task completion and telemetry analysis. These are stored statically in `ml/data/task_training_data.csv` and `ml/data/telemetry_training_data.csv`. You can freely modify these CSV files with your own data.
 
-Run the ML training scripts (ensure the virtual environment is activated):
+Run the ML training scripts (ensure the virtual environment is activated) to train the models on the CSV data:
 ```bash
 python ml/src/task_prediction.py
 python ml/src/anomaly_detection.py

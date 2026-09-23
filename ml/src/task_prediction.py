@@ -10,56 +10,16 @@ MODEL_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")
 MODEL_PATH = os.path.join(MODEL_DIR, "task_prediction_model.joblib")
 ENCODERS_PATH = os.path.join(MODEL_DIR, "task_encoders.joblib")
 
-def generate_synthetic_data(num_samples=1000):
-    """Generate synthetic task data based on provided seed examples."""
-    np.random.seed(42)
-    
-    task_types = ["Earth Excavation", "Trenching", "Material Loading", "Grading", "Demolition"]
-    weathers = ["Sunny", "Rainy", "Cloudy", "Windy"]
-    skill_levels = ["Beginner", "Intermediate", "Expert"]
-    
-    data = {
-        "task_type": np.random.choice(task_types, num_samples),
-        "weather": np.random.choice(weathers, num_samples),
-        "operator_skill": np.random.choice(skill_levels, num_samples),
-        "machine_age": np.random.randint(1, 15, num_samples),
-        "estimated_time": np.random.uniform(20, 120, num_samples)
-    }
-    
-    df = pd.DataFrame(data)
-    
-    # Simulate actual_time based on features (synthetic relationship)
-    # E.g., rainy weather adds time, expert skill reduces time, older machine adds time
-    weather_multiplier = {"Sunny": 1.0, "Cloudy": 1.05, "Windy": 1.1, "Rainy": 1.2}
-    skill_multiplier = {"Expert": 0.9, "Intermediate": 1.0, "Beginner": 1.2}
-    
-    actual_times = []
-    for _, row in df.iterrows():
-        base = row["estimated_time"]
-        wm = weather_multiplier[row["weather"]]
-        sm = skill_multiplier[row["operator_skill"]]
-        age_penalty = 1.0 + (row["machine_age"] * 0.01) # 1% increase per year
-        
-        # Add some random noise
-        noise = np.random.uniform(0.9, 1.1)
-        
-        actual_time = base * wm * sm * age_penalty * noise
-        actual_times.append(round(actual_time, 2))
-        
-    df["actual_time"] = actual_times
-    return df
-
 def train_task_model():
-    """Train the RandomForest model on synthetic data."""
-    print("Generating synthetic task data...")
-    df = generate_synthetic_data(2000)
+    """Train the RandomForest model on the provided dataset."""
+    data_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "task_training_data.csv")
+    if not os.path.exists(data_path):
+        raise FileNotFoundError(f"Dataset not found at {data_path}")
+        
+    print(f"Loading dataset from {data_path}...")
+    df = pd.read_csv(data_path)
     
     os.makedirs(MODEL_DIR, exist_ok=True)
-    
-    # Save training data for reference
-    data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
-    os.makedirs(data_dir, exist_ok=True)
-    df.to_csv(os.path.join(data_dir, "task_training_data.csv"), index=False)
     
     print("Encoding categorical features...")
     encoders = {}
