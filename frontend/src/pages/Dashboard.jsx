@@ -185,8 +185,8 @@ const Dashboard = () => {
       <div className="app-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
         <div style={{ textAlign: 'center' }}>
           <div className="cat-badge" style={{ display: 'inline-block', marginBottom: '16px' }}>CAT INTELLIGENCE</div>
-          <h2 style={{ fontSize: '1.5rem', color: '#FFCD11' }}>Connecting to Machine Telemetry Gateway...</h2>
-          <p style={{ color: '#94A3B8', marginTop: '8px' }}>Initializing PostgreSQL and AI Neural Models</p>
+          <h2 style={{ fontSize: '1.5rem', color: '#0F172A', fontWeight: 700 }}>Connecting to Machine Telemetry Gateway...</h2>
+          <p style={{ color: '#64748B', marginTop: '8px' }}>Initializing PostgreSQL and AI Neural Models</p>
         </div>
       </div>
     );
@@ -204,9 +204,9 @@ const Dashboard = () => {
             <h1 className="brand-title">Smart Operator Assistant</h1>
             <div className="brand-sub">
               <span className="status-dot"></span>
-              <span>TELEMETRY GATEWAY: ONLINE</span>
+              <span style={{ fontWeight: 600, color: '#059669' }}>TELEMETRY GATEWAY: ONLINE</span>
               <span>•</span>
-              <span style={{ color: '#FFCD11' }}>PORT 8001 LINKED</span>
+              <span style={{ color: '#D97706', fontWeight: 600 }}>PORT 8001 LINKED</span>
             </div>
           </div>
         </div>
@@ -214,7 +214,7 @@ const Dashboard = () => {
         <div className="controls-cluster">
           {/* Operator Switcher */}
           <div className="selector-pill">
-            <span style={{ color: '#94A3B8' }}>Operator:</span>
+            <span>Operator:</span>
             <select
               value={selectedOpId}
               onChange={(e) => setSelectedOpId(e.target.value)}
@@ -227,7 +227,7 @@ const Dashboard = () => {
 
           {/* Machine Switcher */}
           <div className="selector-pill">
-            <span style={{ color: '#94A3B8' }}>Machinery:</span>
+            <span>Machinery:</span>
             <select
               value={selectedMachId}
               onChange={(e) => setSelectedMachId(e.target.value)}
@@ -254,15 +254,15 @@ const Dashboard = () => {
         <div className="kpi-card safety">
           <div className="kpi-top">
             <span className="kpi-label">Safety Compliance</span>
-            <div className="kpi-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10B981' }}>
+            <div className="kpi-icon" style={{ background: '#ECFDF5', color: '#059669' }}>
               <ShieldCheck size={20} />
             </div>
           </div>
-          <div className="kpi-val" style={{ color: operator?.safety_score >= 80 ? '#10B981' : '#EF4444' }}>
+          <div className="kpi-val" style={{ color: operator?.safety_score >= 80 ? '#059669' : '#DC2626' }}>
             {operator?.safety_score || 0}<span className="kpi-unit">%</span>
           </div>
           <div className="kpi-sub">
-            <span style={{ color: operator?.safety_score >= 80 ? '#10B981' : '#EF4444', fontWeight: 600 }}>
+            <span style={{ color: operator?.safety_score >= 80 ? '#059669' : '#DC2626', fontWeight: 700 }}>
               {operator?.safety_score >= 85 ? 'Fleet Safe Tier 1' : 'Action Required'}
             </span>
             <span>• {operator?.skill_level} Operator</span>
@@ -273,15 +273,15 @@ const Dashboard = () => {
         <div className="kpi-card efficiency">
           <div className="kpi-top">
             <span className="kpi-label">Efficiency Index</span>
-            <div className="kpi-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8' }}>
+            <div className="kpi-icon" style={{ background: '#F0F9FF', color: '#0284C7' }}>
               <Zap size={20} />
             </div>
           </div>
-          <div className="kpi-val" style={{ color: '#38BDF8' }}>
+          <div className="kpi-val" style={{ color: '#0284C7' }}>
             {operator?.efficiency_score || 0}<span className="kpi-unit">%</span>
           </div>
           <div className="kpi-sub">
-            <TrendingUp size={14} style={{ color: '#10B981' }} />
+            <TrendingUp size={14} style={{ color: '#059669' }} />
             <span>Optimal hydraulic cycle matching</span>
           </div>
         </div>
@@ -290,17 +290,17 @@ const Dashboard = () => {
         <div className="kpi-card machine">
           <div className="kpi-top">
             <span className="kpi-label">Active Machinery</span>
-            <div className="kpi-icon" style={{ background: 'rgba(255, 205, 17, 0.15)', color: '#FFCD11' }}>
+            <div className="kpi-icon" style={{ background: '#FFFBEB', color: '#D97706' }}>
               <Truck size={20} />
             </div>
           </div>
-          <div className="kpi-val" style={{ color: '#FFCD11', fontSize: '1.9rem' }}>
+          <div className="kpi-val" style={{ color: '#B45309', fontSize: '2.1rem' }}>
             {machine?.machine_id}
           </div>
           <div className="kpi-sub">
             <span>{machine?.engine_hours || 0} hrs</span>
             <span>•</span>
-            <span style={{ color: '#10B981', fontWeight: 600 }}>{machine?.status?.toUpperCase()}</span>
+            <span style={{ color: '#059669', fontWeight: 700 }}>{machine?.status?.toUpperCase()}</span>
           </div>
         </div>
 
@@ -308,11 +308,11 @@ const Dashboard = () => {
         <div className="kpi-card task">
           <div className="kpi-top">
             <span className="kpi-label">Assigned Work Order</span>
-            <div className="kpi-icon" style={{ background: 'rgba(168, 85, 247, 0.15)', color: '#A855F7' }}>
+            <div className="kpi-icon" style={{ background: '#F5F3FF', color: '#7C3AED' }}>
               <Clock size={20} />
             </div>
           </div>
-          <div className="kpi-val" style={{ color: '#C084FC', fontSize: '1.6rem' }}>
+          <div className="kpi-val" style={{ color: '#7C3AED', fontSize: '1.7rem' }}>
             {activeTask ? activeTask.task_type : 'Ready For Dispatch'}
           </div>
           <div className="kpi-sub">
@@ -329,17 +329,17 @@ const Dashboard = () => {
         <div className="dashboard-panel">
           <div className="panel-header">
             <div className="panel-title">
-              <Sliders size={20} style={{ color: '#FFCD11' }} />
+              <Sliders size={20} style={{ color: '#D97706' }} />
               Live Telemetry & Anomaly Trigger
             </div>
-            <span className="panel-tag" style={{ background: 'rgba(255, 205, 17, 0.15)', color: '#FFCD11' }}>
+            <span className="panel-tag" style={{ background: '#FFFBEB', color: '#B45309', border: '1px solid #FDE68A' }}>
               Real-Time Feed
             </span>
           </div>
 
           {/* Quick Preset Buttons */}
           <div className="preset-bar">
-            <span style={{ fontSize: '0.8rem', color: '#94A3B8', alignSelf: 'center' }}>Demo Scenarios:</span>
+            <span style={{ fontSize: '0.8rem', color: '#64748B', alignSelf: 'center', fontWeight: 600 }}>Demo Scenarios:</span>
             <button className="preset-chip" onClick={() => applyPreset('normal')}>🟢 Normal Digging</button>
             <button className="preset-chip" onClick={() => applyPreset('idle_waste')}>🟡 High Idle Waste</button>
             <button className="preset-chip" onClick={() => applyPreset('danger')}>🔴 Seatbelt Violation</button>
@@ -349,7 +349,7 @@ const Dashboard = () => {
             <div className="control-field">
               <label>
                 <span>Fuel Burn Rate</span>
-                <span style={{ color: '#FFCD11' }}>{simFuel} L/hr</span>
+                <span style={{ color: '#B45309', fontWeight: 700 }}>{simFuel} L/hr</span>
               </label>
               <input
                 type="range"
@@ -364,7 +364,7 @@ const Dashboard = () => {
             <div className="control-field">
               <label>
                 <span>Idling Duration</span>
-                <span style={{ color: simIdling > 30 ? '#EF4444' : '#38BDF8' }}>{simIdling} min</span>
+                <span style={{ color: simIdling > 30 ? '#DC2626' : '#0284C7', fontWeight: 700 }}>{simIdling} min</span>
               </label>
               <input
                 type="range"
@@ -379,7 +379,7 @@ const Dashboard = () => {
             <div className="control-field">
               <label>
                 <span>Seatbelt Status</span>
-                <span style={{ color: simSeatbelt === 'Fastened' ? '#10B981' : '#EF4444' }}>{simSeatbelt}</span>
+                <span style={{ color: simSeatbelt === 'Fastened' ? '#059669' : '#DC2626', fontWeight: 700 }}>{simSeatbelt}</span>
               </label>
               <div className="toggle-group">
                 <button
@@ -400,7 +400,7 @@ const Dashboard = () => {
             <div className="control-field">
               <label>
                 <span>Cabin Safety Sensor</span>
-                <span style={{ color: simSafetyAlert ? '#EF4444' : '#10B981' }}>{simSafetyAlert ? 'TRIGGERED' : 'CLEAR'}</span>
+                <span style={{ color: simSafetyAlert ? '#DC2626' : '#059669', fontWeight: 700 }}>{simSafetyAlert ? 'TRIGGERED' : 'CLEAR'}</span>
               </label>
               <div className="toggle-group">
                 <button
@@ -433,27 +433,27 @@ const Dashboard = () => {
             <div className={`incident-alert-banner ${lastSimResult.safety_analysis?.risk_level === 'SAFE' ? 'safe-banner' : ''}`}>
               {lastSimResult.safety_analysis?.risk_level !== 'SAFE' ? (
                 <>
-                  <AlertTriangle size={24} style={{ color: '#EF4444', flexShrink: 0, marginTop: '2px' }} />
+                  <AlertTriangle size={24} style={{ color: '#DC2626', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <div style={{ color: '#EF4444', fontWeight: 700, fontSize: '0.95rem' }}>
+                    <div style={{ color: '#DC2626', fontWeight: 700, fontSize: '0.95rem' }}>
                       SAFETY ALERT: {lastSimResult.safety_analysis?.risk_level} (Score: {lastSimResult.safety_analysis?.safety_score}%)
                     </div>
-                    <div style={{ color: '#FCA5A5', fontSize: '0.85rem', marginTop: '4px' }}>
+                    <div style={{ color: '#B91C1C', fontSize: '0.85rem', marginTop: '4px' }}>
                       Violations: {lastSimResult.safety_analysis?.reasons?.join(', ') || 'Abnormal operations flagged'}
                     </div>
-                    <div style={{ color: '#94A3B8', fontSize: '0.78rem', marginTop: '4px' }}>
+                    <div style={{ color: '#64748B', fontSize: '0.78rem', marginTop: '4px' }}>
                       Action: Safety incident logged. Auto-assigned corrective training modules below.
                     </div>
                   </div>
                 </>
               ) : (
                 <>
-                  <CheckCircle2 size={24} style={{ color: '#10B981', flexShrink: 0, marginTop: '2px' }} />
+                  <CheckCircle2 size={24} style={{ color: '#059669', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <div style={{ color: '#10B981', fontWeight: 700, fontSize: '0.95rem' }}>
+                    <div style={{ color: '#059669', fontWeight: 700, fontSize: '0.95rem' }}>
                       SAFE TELEMETRY RECEIVED
                     </div>
-                    <div style={{ color: '#A7F3D0', fontSize: '0.85rem', marginTop: '4px' }}>
+                    <div style={{ color: '#047857', fontSize: '0.85rem', marginTop: '4px' }}>
                       ML Isolation Forest evaluated operating conditions within normal parameters.
                     </div>
                   </div>
@@ -467,10 +467,10 @@ const Dashboard = () => {
         <div className="dashboard-panel">
           <div className="panel-header">
             <div className="panel-title">
-              <Cpu size={20} style={{ color: '#38BDF8' }} />
+              <Cpu size={20} style={{ color: '#0284C7' }} />
               ML Task Completion Time Predictor
             </div>
-            <span className="panel-tag" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8' }}>
+            <span className="panel-tag" style={{ background: '#F0F9FF', color: '#0284C7', border: '1px solid #BAE6FD' }}>
               RandomForest AI
             </span>
           </div>
@@ -521,7 +521,7 @@ const Dashboard = () => {
 
           <button
             className="action-btn-primary"
-            style={{ background: 'linear-gradient(135deg, #38BDF8 0%, #0284C7 100%)', color: '#fff', boxShadow: '0 4px 14px rgba(56, 189, 248, 0.3)' }}
+            style={{ background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)', color: '#FFFFFF', boxShadow: '0 4px 12px rgba(2, 132, 199, 0.25)' }}
             onClick={runMLPrediction}
             disabled={predicting}
           >
@@ -533,20 +533,20 @@ const Dashboard = () => {
           {predResult && (
             <div className="prediction-result-card">
               <div className="result-row">
-                <span style={{ fontSize: '0.85rem', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <span style={{ fontSize: '0.85rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>
                   Predicted Time
                 </span>
-                <span style={{ fontSize: '0.8rem', background: 'rgba(255, 205, 17, 0.15)', color: '#FFCD11', padding: '2px 8px', borderRadius: '4px', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.8rem', background: '#FEF3C7', color: '#92400E', padding: '3px 10px', borderRadius: '4px', fontWeight: 700 }}>
                   Confidence: {predResult.confidence}%
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
-                <div className="result-big-val">{predResult.predicted_time} <span style={{ fontSize: '1.1rem', color: '#94A3B8' }}>mins</span></div>
-                <div style={{ fontSize: '0.9rem', color: predResult.predicted_time > predBaseTime ? '#F59E0B' : '#10B981', fontWeight: 600 }}>
+                <div className="result-big-val">{predResult.predicted_time} <span style={{ fontSize: '1.1rem', color: '#64748B' }}>mins</span></div>
+                <div style={{ fontSize: '0.9rem', color: predResult.predicted_time > predBaseTime ? '#D97706' : '#059669', fontWeight: 700 }}>
                   {predResult.predicted_time > predBaseTime ? `+${(predResult.predicted_time - predBaseTime).toFixed(1)}m delay risk` : 'Optimal pace'}
                 </div>
               </div>
-              <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '6px' }}>
+              <div style={{ fontSize: '0.82rem', color: '#64748B', marginTop: '6px' }}>
                 Engineered based on {operator?.name}'s {operator?.skill_level} rating & {predWeather} ground conditions.
               </div>
             </div>
@@ -560,24 +560,24 @@ const Dashboard = () => {
         <div className="dashboard-panel">
           <div className="panel-header">
             <div className="panel-title">
-              <TrendingUp size={20} style={{ color: '#38BDF8' }} />
+              <TrendingUp size={20} style={{ color: '#0284C7' }} />
               Telemetry Trend (Fuel vs Idling)
             </div>
-            <span className="panel-tag" style={{ background: 'rgba(255,255,255,0.08)', color: '#94A3B8' }}>
+            <span className="panel-tag" style={{ background: '#F1F5F9', color: '#475569' }}>
               Historical Log
             </span>
           </div>
           <div className="chart-box">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={telemetry.slice().reverse()}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                <XAxis dataKey="engine_hours" stroke="#64748B" tick={{ fontSize: 12 }} />
-                <YAxis yAxisId="left" stroke="#38BDF8" tick={{ fontSize: 12 }} />
-                <YAxis yAxisId="right" orientation="right" stroke="#F43F5E" tick={{ fontSize: 12 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
+                <XAxis dataKey="engine_hours" stroke="#94A3B8" tick={{ fontSize: 12 }} />
+                <YAxis yAxisId="left" stroke="#0284C7" tick={{ fontSize: 12 }} />
+                <YAxis yAxisId="right" orientation="right" stroke="#E11D48" tick={{ fontSize: 12 }} />
                 <Tooltip />
                 <Legend wrapperStyle={{ paddingTop: '10px' }} />
-                <Line yAxisId="left" type="monotone" dataKey="fuel_used" stroke="#38BDF8" name="Fuel Burn (L)" strokeWidth={3} dot={{ r: 3 }} />
-                <Line yAxisId="right" type="monotone" dataKey="idling_time" stroke="#F43F5E" name="Idling (min)" strokeWidth={2} />
+                <Line yAxisId="left" type="monotone" dataKey="fuel_used" stroke="#0284C7" name="Fuel Burn (L)" strokeWidth={3} dot={{ r: 3 }} />
+                <Line yAxisId="right" type="monotone" dataKey="idling_time" stroke="#E11D48" name="Idling (min)" strokeWidth={2} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -587,19 +587,19 @@ const Dashboard = () => {
         <div className="dashboard-panel">
           <div className="panel-header">
             <div className="panel-title">
-              <Clock size={20} style={{ color: '#FFCD11' }} />
+              <Clock size={20} style={{ color: '#D97706' }} />
               Task Execution Performance (Est. vs Actual)
             </div>
-            <span className="panel-tag" style={{ background: 'rgba(255, 205, 17, 0.15)', color: '#FFCD11' }}>
+            <span className="panel-tag" style={{ background: '#FFFBEB', color: '#B45309' }}>
               Precision Analytics
             </span>
           </div>
           <div className="chart-box">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={tasks.filter(t => t.actual_time)}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                <XAxis dataKey="task_type" stroke="#64748B" tick={{ fontSize: 12 }} />
-                <YAxis stroke="#64748B" tick={{ fontSize: 12 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
+                <XAxis dataKey="task_type" stroke="#94A3B8" tick={{ fontSize: 12 }} />
+                <YAxis stroke="#94A3B8" tick={{ fontSize: 12 }} />
                 <Tooltip />
                 <Legend wrapperStyle={{ paddingTop: '10px' }} />
                 <Bar dataKey="estimated_time" fill="#3B82F6" name="Planned (min)" radius={[4, 4, 0, 0]} />
@@ -614,19 +614,19 @@ const Dashboard = () => {
       <div className="dashboard-panel" style={{ marginBottom: '28px' }}>
         <div className="panel-header">
           <div className="panel-title">
-            <GraduationCap size={22} style={{ color: '#FFCD11' }} />
+            <GraduationCap size={22} style={{ color: '#D97706' }} />
             Adaptive AI Safety Coaching & Training Recommendations
           </div>
-          <span className="panel-tag" style={{ background: 'rgba(255, 205, 17, 0.15)', color: '#FFCD11' }}>
+          <span className="panel-tag" style={{ background: '#FFFBEB', color: '#B45309', border: '1px solid #FDE68A' }}>
             Auto-Generated by Safety Engine
           </span>
         </div>
 
         {recommendations.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '32px', color: '#94A3B8' }}>
-            <CheckCircle2 size={36} style={{ color: '#10B981', margin: '0 auto 12px' }} />
-            <h4 style={{ color: '#fff', fontSize: '1.1rem' }}>No Urgent Corrective Training Required</h4>
-            <p style={{ fontSize: '0.85rem', marginTop: '4px' }}>
+          <div style={{ textAlign: 'center', padding: '36px', color: '#64748B' }}>
+            <CheckCircle2 size={40} style={{ color: '#059669', margin: '0 auto 12px' }} />
+            <h4 style={{ color: '#0F172A', fontSize: '1.15rem', fontWeight: 700 }}>No Urgent Corrective Training Required</h4>
+            <p style={{ fontSize: '0.88rem', marginTop: '6px' }}>
               {operator?.name} has maintained compliant operating parameters. Trigger an incident simulation above to see live coaching assignment.
             </p>
           </div>
@@ -639,11 +639,11 @@ const Dashboard = () => {
                     <span className={rec.priority === 'High' ? 'rec-badge-high' : 'rec-badge-med'}>
                       {rec.priority} Priority
                     </span>
-                    <span style={{ fontSize: '0.8rem', color: '#94A3B8' }}>{rec.category}</span>
-                    <span style={{ fontSize: '0.8rem', color: '#64748B' }}>• {rec.duration} mins</span>
+                    <span style={{ fontSize: '0.8rem', color: '#475569', fontWeight: 600 }}>{rec.category}</span>
+                    <span style={{ fontSize: '0.8rem', color: '#94A3B8' }}>• {rec.duration} mins</span>
                   </div>
-                  <h4 style={{ color: '#fff', fontSize: '1rem', fontWeight: 600 }}>{rec.title}</h4>
-                  <p style={{ color: '#94A3B8', fontSize: '0.84rem', marginTop: '2px' }}>{rec.reason}</p>
+                  <h4 style={{ color: '#0F172A', fontSize: '1rem', fontWeight: 700 }}>{rec.title}</h4>
+                  <p style={{ color: '#475569', fontSize: '0.85rem', marginTop: '2px' }}>{rec.reason}</p>
                 </div>
                 <button
                   className={`enroll-btn ${enrolledCourses[index] ? 'enrolled' : ''}`}
