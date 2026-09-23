@@ -11,7 +11,8 @@ router = APIRouter(
     tags=["machines"]
 )
 
-@router.get("/", response_model=List[schemas.Machine])
+@router.get("", response_model=List[schemas.Machine])
+@router.get("/", response_model=List[schemas.Machine], include_in_schema=False)
 def get_machines(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     machines = db.query(models.Machine).offset(skip).limit(limit).all()
     return machines

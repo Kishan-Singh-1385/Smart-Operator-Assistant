@@ -61,9 +61,9 @@ smart-operator-assistant/
    ```
 6. Start the FastAPI server:
    ```bash
-   uvicorn backend.app.main:app --reload
+   uvicorn app.main:app --app-dir backend --port 8001 --reload
    ```
-   The API will be available at `http://localhost:8000`.
+   The API will be available at `http://localhost:8001`.
 
 ## ML Model Training
 

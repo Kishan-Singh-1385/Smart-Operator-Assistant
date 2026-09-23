@@ -12,7 +12,8 @@ router = APIRouter(
     tags=["tasks"]
 )
 
-@router.get("/", response_model=List[schemas.Task])
+@router.get("", response_model=List[schemas.Task])
+@router.get("/", response_model=List[schemas.Task], include_in_schema=False)
 def get_tasks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     tasks = db.query(models.Task).offset(skip).limit(limit).all()
     return tasks

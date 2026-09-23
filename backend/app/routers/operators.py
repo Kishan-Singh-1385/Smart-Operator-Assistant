@@ -11,7 +11,8 @@ router = APIRouter(
     tags=["operators"]
 )
 
-@router.get("/", response_model=List[schemas.Operator])
+@router.get("", response_model=List[schemas.Operator])
+@router.get("/", response_model=List[schemas.Operator], include_in_schema=False)
 def get_operators(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     operators = db.query(models.Operator).offset(skip).limit(limit).all()
     return operators
