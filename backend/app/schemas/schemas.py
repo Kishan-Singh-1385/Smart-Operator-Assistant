@@ -77,7 +77,7 @@ class Telemetry(TelemetryBase):
 class TrainingRecommendation(BaseModel):
     title: str
     category: str
-    description: str
+    description: Optional[str] = None
     duration: int
     reason: str
     priority: str
