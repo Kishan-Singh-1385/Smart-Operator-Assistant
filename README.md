@@ -24,9 +24,7 @@ smart-operator-assistant/
 └── .env.example             # Template for environment variables
 ```
 
-## Quick Start
 
-This repository is designed to be easily demonstrable. A complete end-to-end launch script is provided to handle all dependencies, training, and database seeding automatically.
 
 ## PostgreSQL Setup
 
